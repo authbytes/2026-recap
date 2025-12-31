@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our 2025 – A Monthly Scroll</title>
+
+  <!-- Google Font (clean + emotional, not too playful) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to bottom, #fff5f8, #fdeef2);
+      color: #3a3a3a;
+      overflow-x: hidden;
+    }
+
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* ===== INTRO ===== */
+    .intro {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .intro h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .intro p {
+      font-size: 1.1rem;
+      max-width: 500px;
+      opacity: 0.85;
+    }
+
+    /* ===== MONTH SECTION ===== */
+    .month {
+      padding: 5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    .month h2 {
+      font-size: 2.2rem;
+      letter-spacing: 1px;
+    }
+
+    .gallery {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .gallery img {
+      width: 260px;
+      height: 360px;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    /* ===== NOTE STYLE LETTER ===== */
+    .note {
+      background: #fff;
+      width: 100%;
+      max-width: 520px;
+      padding: 2rem 2rem 2.5rem;
+      border-radius: 12px;
+      position: relative;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      font-family: 'Playfair Display', serif;
+      line-height: 1.7;
+    }
+
+    .note::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 22px;
+      background: repeating-linear-gradient(
+        90deg,
+        #ffd6e0,
+        #ffd6e0 12px,
+        #fff 12px,
+        #fff 24px
+      );
+      border-radius: 12px 12px 0 0;
+    }
+
+    .note p {
+      margin-top: 1.2rem;
+      white-space: pre-line;
+    }
+
+    /* ===== FINAL LETTER ===== */
+    .finale {
+      min-height: 100vh;
+      padding: 4rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .final-letter {
+      background: #fff;
+      max-width: 650px;
+      padding: 3rem;
+      border-radius: 18px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+      font-family: 'Playfair Display', serif;
+    }
+
+    .final-letter h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .final-letter p {
+      line-height: 1.8;
+      white-space: pre-line;
+    }
+
+    /* ===== SMOOTH SCROLL FADE ===== */
+    .fade {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .fade.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 600px) {
+      .gallery img {
+        width: 90%;
+        height: auto;
+      }
+
+      .intro h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- INTRO -->
+  <section class="intro fade">
+    <div>
+      <h1>Our 2025</h1>
+      <p>A year told softly — month by month, memory by memory.</p>
+    </div>
+  </section>
+
+  <!-- ===== MONTH TEMPLATE (REPEAT 12 TIMES) ===== -->
+  <!-- JANUARY -->
+  <section class="month fade">
+    <h2>January</h2>
+
+    <div class="gallery">
+      <img src="images/january-1.jpg" alt="January memory 1">
+      <img src="images/january-2.jpg" alt="January memory 2">
+    </div>
+
+    <div class="note">
+      <p>
+January letter goes here.
+You can write freely — like a journal entry.
+      </p>
+    </div>
+  </section>
+
+  <!-- FEBRUARY -->
+  <section class="month fade">
+    <h2>February</h2>
+    <div class="gallery">
+      <img src="images/february-1.jpg">
+      <img src="images/february-2.jpg">
+    </div>
+    <div class="note"><p>February letter here.</p></div>
+  </section>
+
+  <!-- COPY THIS MONTH BLOCK FOR MARCH – DECEMBER -->
+
+  <!-- ===== FINAL LETTER ===== -->
+  <section class="finale fade">
+    <div class="final-letter">
+      <h2>To Us, at the End of 2025</h2>
+      <p>
+Final letter goes here.
+This is where you talk about the whole year,
+what stayed, what changed, and what you choose next.
+      </p>
+    </div>
+  </section>
+
+  <script>
+    const faders = document.querySelectorAll('.fade');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    faders.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
